@@ -1,10 +1,15 @@
+import 'package:bde_cesi_nancy/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final bool isDev = Provider.of<Flavor>(context) == Flavor.dev;
+
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: isDev,
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
