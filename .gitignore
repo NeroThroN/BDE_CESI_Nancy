@@ -44,3 +44,8 @@ app.*.map.json
 web/
 ios/
 android/
+
+# Remove Firebase files
+.firebase/
+.firebaserc
+firebase.json
