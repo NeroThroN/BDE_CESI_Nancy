@@ -6,15 +6,19 @@ class DefaultLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.orange,
-      child: Column(
-        children: [
-          Container(
-            height: 100,
-            child: Center(child: Text('Default Layout')),
-          ),
-          Expanded(child: this.child),
-        ],
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        curve: Curves.easeOutQuad,
+        color: Theme.of(context).scaffoldBackgroundColor,
+        child: Column(
+          children: [
+            Container(
+              height: 100,
+              child: Center(child: Text('Default Layout')),
+            ),
+            Expanded(child: this.child),
+          ],
+        ),
       ),
     );
   }
