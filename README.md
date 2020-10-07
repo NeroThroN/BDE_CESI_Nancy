@@ -1,16 +1,18 @@
-# bde_cesi_nancy
+# BDE CESI de Nancy
+![](https://media.discordapp.net/attachments/760549603807723561/760549637097652284/CESI_Logo.jpg#Logo "Logo moderne CESI")
+## Introduction
+Ce projet est initialement un *proof of concept* d'une application WEB & Mobile pour le BDE du CESI de Nancy
+C'est également le moyen de tester la solution de Flutter pour générer une solution cross-platfom, ainsi qu'un défi d'UX
 
-A new Flutter project.
+## Fonctionnalités
+Cette application sert d'épicerie en ligne, avec laquelle on peut réserver ses commandes.
+Elle permet aussi de converser avec d'autres membres sur des channels de discussions.
+Un calendrier permet la visualisation des évènements à venir.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Design
+Le design de la plateforme est volontairement poussé afin d'avoir la réalisation la plus *marketable* possible.
+Ces inspirations viennent principalement d'image postée sur le site [Dribble](https://dribbble.com/) ainsi que d'idées de design personnels
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Auteur
+@NeroThroN - Stephen Caille
