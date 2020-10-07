@@ -5,7 +5,7 @@ import 'app.dart';
 
 void main() {
   runApp(Provider.value(
-    value: Flavor.dev,
+    value: Flavor.prod,
     child: MyApp(),
   ));
 }

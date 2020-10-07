@@ -1,57 +1,66 @@
+import 'dart:ui';
+import 'package:bde_cesi_nancy/controllers/controllers.dart';
 import 'package:bde_cesi_nancy/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Window window = WidgetsBinding.instance.window;
     final bool isDev = Provider.of<Flavor>(context) == Flavor.dev;
 
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: isDev,
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return GetBuilder<ThemeController>(
+      init: ThemeController(systemBrightness: window.platformBrightness),
+      builder: (ThemeController controller) {
+        window.onPlatformBrightnessChanged = () => controller.updateSystemBrightness(window.platformBrightness);
+
+        return GetMaterialApp(
+          title: 'Flutter Demo',
+          theme: controller.getTheme(),
+          debugShowCheckedModeBanner: isDev,
+          enableLog: isDev,
+          home: Home(),
+        );
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  final String title;
-  MyHomePage({this.title});
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() => _counter++);
-  }
-
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("BDE CESI Nancy"),
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+          children: [
+            MaterialButton(
+              child: Text('Toggle brightness'),
+              color: Theme.of(context).primaryColor,
+              onPressed: () {
+                Get.find<ThemeController>().toggleBrightness();
+              },
             ),
+            MaterialButton(
+              child: Text('System Brightness'),
+              color: Theme.of(context).primaryColor,
+              onPressed: () {
+                Get.find<ThemeController>().setBrightness(ThemeBrightness.System);
+              },
+            ),
+            MaterialButton(
+              child: Text('Toggle school'),
+              color: Theme.of(context).primaryColor,
+              onPressed: () {
+                Get.find<ThemeController>().toggleSchool();
+              },
+            )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
